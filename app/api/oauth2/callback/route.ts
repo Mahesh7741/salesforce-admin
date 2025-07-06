@@ -49,7 +49,8 @@ function loadAuthConfig(): AuthConfig {
     clientId: process.env.SALESFORCE_CLIENT_ID!,
     clientSecret: process.env.SALESFORCE_CLIENT_SECRET!,
     redirectUri: process.env.SALESFORCE_REDIRECT_URI!,
-    loginUrl: process.env.SALESFORCE_LOGIN_URL || "https://login.salesforce.com",
+    loginUrl:
+      process.env.SALESFORCE_LOGIN_URL || "https://login.salesforce.com",
   };
 }
 
@@ -81,7 +82,10 @@ export async function GET(request: NextRequest) {
     const state = searchParams.get("state");
 
     if (!code || !state) {
-      return NextResponse.json({ error: "Missing code or state" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing code or state" },
+        { status: 400 }
+      );
     }
 
     const cookieStore = await cookies();
@@ -96,7 +100,10 @@ export async function GET(request: NextRequest) {
     const codeVerifier = cookieStore.get("code_verifier")?.value;
 
     if (!codeVerifier) {
-      return NextResponse.json({ error: "Missing code verifier" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing code verifier" },
+        { status: 400 }
+      );
     }
 
     const tokenRes = await fetch(`${config.loginUrl}/services/oauth2/token`, {
@@ -115,7 +122,10 @@ export async function GET(request: NextRequest) {
     if (!tokenRes.ok) {
       const errorText = await tokenRes.text();
       console.error("Token exchange failed:", errorText);
-      return NextResponse.json({ error: "Token exchange failed" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Token exchange failed" },
+        { status: 400 }
+      );
     }
 
     const tokenData: TokenResponse = await tokenRes.json();
@@ -151,7 +161,6 @@ export async function GET(request: NextRequest) {
         profile: userInfo.urls?.profile,
       },
     };
-
     console.log("Session created:", session);
 
     // Set session cookie
@@ -170,8 +179,14 @@ export async function GET(request: NextRequest) {
     // Cleanup PKCE cookies
     response.cookies.delete("code_verifier");
     response.cookies.delete("oauth_state");
-
-    return response;
+    const responseJSON = {
+      userInfo: session.userInfo,
+      accessToken: session.accessToken,
+      instanceUrl: session.instanceUrl,
+      refreshToken: session.refreshToken,
+    };
+    console.log("responseJSON :", responseJSON);
+    return NextResponse.json({ responseJSON });
   } catch (error) {
     console.error("OAuth callback error:", error);
     return NextResponse.json(
