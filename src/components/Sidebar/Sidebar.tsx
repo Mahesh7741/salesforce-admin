@@ -75,7 +75,7 @@ export default function Sidebar() {
       </div>
 
       {/* Main Navigation - Non-collapsible content */}
-      <div className="flex-1 p-3">
+      <div className="flex-1 p-3 pt-1">
         <div className="space-y-3">
           {/* Dashboard */}
           <SidebarItem
