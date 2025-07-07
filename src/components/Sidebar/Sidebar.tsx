@@ -51,7 +51,7 @@ export default function Sidebar() {
     : 'bg-white border-gray-200 text-gray-800';
 
   return (
-    <div className={`${isCollapsed ? 'w-14' : 'w-48'} ${themeClasses} h-full overflow-y-auto transition-all duration-300 ease-in-out flex flex-col min-h-0`}>
+    <div className={`${isCollapsed ? 'w-14' : 'w-48'} ${themeClasses} h-full overflow-y-auto transition-all duration-300 ease-in-out flex flex-col min-h-0 `}>
       {/* Header */}
       <div className="p-3">
         <div className="flex items-center justify-between">
@@ -62,7 +62,7 @@ export default function Sidebar() {
           )}
           <button
             onClick={toggleSidebar}
-            className={`p-1.5 rounded-md transition-colors duration-200 ${
+            className={`px-2 py-1.5 rounded-md transition-colors duration-200 ${
               isDark 
                 ? 'hover:bg-gray-700 text-gray-300' 
                 : 'hover:bg-gray-100 text-gray-600'

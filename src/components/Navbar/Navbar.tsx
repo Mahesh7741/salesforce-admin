@@ -56,7 +56,7 @@ export default function Navbar() {
   const showThemeOptions = isThemeSubmenuOpen || isHoveringTheme;
 
   return (
-    <nav className="bg-white dark:bg-gray-900 px-3 py-3 shadow-sm">
+    <nav className="bg-white dark:bg-gray-900 px-3 py-2.5 shadow-sm">
       <div className="w-full flex items-center justify-between ">
         {/* Logo and Title */}
         <div className="flex items-center gap-2">
