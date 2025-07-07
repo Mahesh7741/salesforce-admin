@@ -51,9 +51,9 @@ export default function Sidebar() {
     : 'bg-white border-gray-200 text-gray-800';
 
   return (
-    <div className={`${isCollapsed ? 'w-14' : 'w-48'} ${themeClasses} border-r  h-full overflow-y-auto transition-all duration-300 ease-in-out flex flex-col min-h-0`}>
+    <div className={`${isCollapsed ? 'w-14' : 'w-48'} ${themeClasses} h-full overflow-y-auto transition-all duration-300 ease-in-out flex flex-col min-h-0`}>
       {/* Header */}
-      <div className="p-3 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-3">
         <div className="flex items-center justify-between">
           {!isCollapsed && (
             <h2 className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-800'}`}>
@@ -76,7 +76,7 @@ export default function Sidebar() {
 
       {/* Main Navigation - Non-collapsible content */}
       <div className="flex-1 p-3">
-        <div className="space-y-1">
+        <div className="space-y-3">
           {/* Dashboard */}
           <SidebarItem
             icon={Home}
@@ -150,7 +150,7 @@ export default function Sidebar() {
       </div>
 
       {/* Bottom Section - Settings */}
-      <div className={`p-4 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+      <div className="p-3">
         <SidebarItem
           icon={Settings}
           label="Settings"

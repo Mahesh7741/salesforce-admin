@@ -56,16 +56,16 @@ export default function Navbar() {
   const showThemeOptions = isThemeSubmenuOpen || isHoveringTheme;
 
   return (
-    <nav className="bg-white dark:bg-gray-900 border-b px-8 py-2 shadow-sm">
-      <div className="w-full flex items-center justify-between">
+    <nav className="bg-white dark:bg-gray-900 px-3 py-3 shadow-sm">
+      <div className="w-full flex items-center justify-between ">
         {/* Logo and Title */}
         <div className="flex items-center gap-2">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
-            className="h-6"
+            className="h-7"
             alt="Logo"
           />
-          <span className="font-semibold text-sm text-gray-900 dark:text-white">
+          <span className="font-semibold text-lg text-gray-900 dark:text-white">
             Salesforce Manager
           </span>
         </div>
@@ -74,9 +74,9 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Avatar className="cursor-pointer">
+              <Avatar className="cursor-pointer border-2 border-blue-500 h-8 w-8">
                 <AvatarImage src="/avatar.jpg" alt="User" />
-                <AvatarFallback>UG</AvatarFallback>
+                <AvatarFallback className="text-xs">UG</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
 
