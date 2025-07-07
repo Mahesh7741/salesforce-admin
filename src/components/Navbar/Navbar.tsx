@@ -58,7 +58,7 @@ export default function Navbar() {
   return (
     <nav className="bg-white dark:bg-gray-900 px-3 py-2.5 shadow-sm">
       <div className="w-full flex items-center justify-between ">
-        {/* Logo and Title */}
+        {/* Logo and Title a */}
         <div className="flex items-center gap-2">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
