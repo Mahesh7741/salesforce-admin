@@ -1,24 +1,23 @@
-import Navbar from "@/components/Navbar/Navbar";
-import Sidebar from "@/components/Sidebar/Sidebar";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  function handleClick(): void {
+    router.push("/api/oauth2/auth");
+  }
+
   return (
-    <div className="h-screen flex flex-col">
-      {/* Navbar at the top spanning full width */}
-      <Navbar />
-      
-      {/* Main content area with sidebar and content */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar on the left */}
-        <div className="h-full">
-          <Sidebar />
-        </div>
-        
-        {/* Main content area */}
-        <main className="flex-1 p-8 overflow-auto">
-          <h1 className="text-2xl font-bold">Welcome to Salesforce Manager</h1>
-        </main>
-      </div>
+    <div className="flex min-h-screen items-center justify-center bg-gray-50">
+      <Button
+        onClick={handleClick}
+        className="text-lg px-6 py-3 transition-all duration-200 hover:scale-105"
+      >
+        Login with Salesforce
+      </Button>
     </div>
   );
 }
