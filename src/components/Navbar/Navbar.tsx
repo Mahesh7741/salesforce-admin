@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
-import { Moon, Sun, ChevronRight, Palette, Monitor } from "lucide-react";
+import { Moon, Sun, ChevronRight, Palette, Monitor, User, Settings, CreditCard, LogOut } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -57,15 +57,15 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white dark:bg-gray-900 px-3 py-2.5 shadow-sm">
-      <div className="w-full flex items-center justify-between ">
-        {/* Logo and Title a */}
+      <div className="w-full flex items-center justify-between">
+        {/* Logo and Title */}
         <div className="flex items-center gap-2">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
-            className="h-7"
+            className="h-6.5"
             alt="Logo"
           />
-          <span className="font-semibold text-lg text-gray-900 dark:text-white">
+          <span className="font-semibold text-[17px] text-gray-900 dark:text-white pl-1">
             Salesforce Manager
           </span>
         </div>
@@ -82,19 +82,30 @@ export default function Navbar() {
 
             <DropdownMenuContent
               align="end"
-              className="w-48"
+              className="w-56"
               onMouseLeave={handleThemeSubmenuLeave}
             >
-              <div className="px-4 py-3">
+              {/* Profile Section */}
+              <div className="px-4 py-3 space-y-1">
                 <p className="text-sm font-medium text-gray-900 dark:text-white">
-                  Bonnie Green
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  name@flowbite.com
+                  Mahesh Savant
                 </p>
               </div>
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Earnings</DropdownMenuItem>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" />
+                <span>Profile</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Settings className="mr-2 h-4 w-4" />
+                <span>Settings</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <CreditCard className="mr-2 h-4 w-4" />
+                <span>Billing</span>
+              </DropdownMenuItem>
 
               <DropdownMenuSeparator />
 
@@ -155,7 +166,10 @@ export default function Navbar() {
               </div>
 
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Sign out</DropdownMenuItem>
+              <DropdownMenuItem>
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>Sign out</span>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
