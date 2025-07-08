@@ -29,7 +29,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
-            className="h-6.5"
+            className="h-6.5 pl-1"
             alt="Logo"
           />
           <span className="font-semibold text-[17px] text-gray-900 dark:text-white pl-1">
