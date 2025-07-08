@@ -95,7 +95,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Invalid state" }, { status: 403 });
     }
 
-    const [, returnUrl = "/"] = state.split(":");
     const decodedReturnUrl = "/dashboard";
     const codeVerifier = cookieStore.get("code_verifier")?.value;
 

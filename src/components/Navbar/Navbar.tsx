@@ -17,20 +17,23 @@ import {
   DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function Navbar() {
   const { setTheme, theme } = useTheme();
 
   return (
-    <nav className="bg-white dark:bg-gray-900 px-3 py-2.5 shadow-sm">
+    <nav className="bg-white dark:bg-gray-900 px-3 py-2.5 shadow-sm sticky top-0 z-50">
       <div className="w-full flex items-center justify-between">
         {/* Logo and Title */}
         <div className="flex items-center gap-2">
-          <img
+          <Image
             src="https://flowbite.com/docs/images/logo.svg"
-            className="h-6.5 pl-1"
-            alt="Logo"
+            width={26}
+            height={26}
+            className="pl-1"
+            alt="Salesforce Manager Logo"
+            priority
           />
           <span className="font-semibold text-[17px] text-gray-900 dark:text-white pl-1">
             Salesforce Manager
@@ -42,7 +45,7 @@ export default function Navbar() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Avatar className="cursor-pointer border-2 border-blue-500 h-8 w-8">
-                <AvatarImage src="/avatar.jpg" alt="User" />
+                <AvatarImage src="/avatar.jpg" alt="User profile" />
                 <AvatarFallback className="text-xs">UG</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
