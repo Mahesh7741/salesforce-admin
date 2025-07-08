@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
     }
 
     const [, returnUrl = "/"] = state.split(":");
-    const decodedReturnUrl = decodeURIComponent(returnUrl);
+    const decodedReturnUrl = "/dashboard";
     const codeVerifier = cookieStore.get("code_verifier")?.value;
 
     if (!codeVerifier) {
@@ -186,7 +186,7 @@ export async function GET(request: NextRequest) {
       refreshToken: session.refreshToken,
     };
     console.log("responseJSON :", responseJSON);
-    return NextResponse.json({ responseJSON });
+    return response;
   } catch (error) {
     console.error("OAuth callback error:", error);
     return NextResponse.json(
