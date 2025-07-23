@@ -1,6 +1,27 @@
+'use client';
 import Navbar from "@/components/Navbar/Navbar";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+
 export default function DashboardPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("connected") === "1") {
+      fetch("/api/session")
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data.error) {
+            localStorage.setItem("sf_session", JSON.stringify(data));
+          }
+          // Remove the query param from the URL
+          router.replace("/dashboard");
+        });
+    }
+  }, [searchParams, router]);
+
   return (
     <div className="h-screen flex flex-col">
       {/* Navbar at the top spanning full width */}
